@@ -9,6 +9,14 @@ if [ ! -f "/var/www/html/psalm.xml" ]; then
     (cd /var/www/html && psalm --init)
 fi
 
+# Remove Folder Vendor if Exist
+if [ ! -d "/var/www/html/vendor" ]; then
+    rm -rf /var/www/html/vendor
+fi
+
+# Generate Vendor with Psalm Package
+(cd /var/www/html && composer install)
+
 # Running Psalm Testing
 echo "Running Static Analysis Security Testing with Psalm..."
 psalm --config=/var/www/html/psalm.xml --root=/var/www/html $ARGS 
