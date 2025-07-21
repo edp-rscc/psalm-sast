@@ -17,7 +17,7 @@ RUN apk add --no-cache \
     git 
 
 # Copy Composer Package
-COPY --from=composer:1.10.26 /usr/bin/composer /usr/local/bin/composer
+COPY --from=composer:2.8 /usr/bin/composer /usr/local/bin/composer
 
 # Install Psalm DAST Global
 RUN composer global require vimeo/psalm
